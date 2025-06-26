@@ -1,0 +1,37 @@
+.login-glow-border {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2px;
+  background: #111;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.login-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 2px;
+  background: linear-gradient(270deg, #00ffff, #0022ff, #00ffff);
+  background-size: 400% 400%;
+  animation: glowing-border 9s linear infinite;
+  z-index: -1;
+
+  /* Truco para hacer que solo se vea el borde, no tape el contenido interior */
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+
+@keyframes glowing-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
